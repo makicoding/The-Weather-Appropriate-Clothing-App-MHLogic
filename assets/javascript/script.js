@@ -43,7 +43,12 @@ var clothingArray = [];             // An empty array for clothing that will be 
 // --------------------------------------------------------------------------------
 // FUNCTION TO CALL GOOGLE MAPS API & DARKSKY WEATHER API
 
-// Google Maps API Key: AIzaSyBrwwwbvDLEEipFn_nr9sUtcVWqRugE2OA
+// Maki's API Keys:
+// Google Maps API Key: AIzaSyD7a3yIPEBgbbIndUZTVahnaxW-XNuSYdI
+// Dark Sky API key: aa1d47baa06ebf9875856ae457f48ec5
+
+// Iwona's API Keys:
+// Google Maps API Key: AIzaSyBQl-QMKAwNvWndyQcRfqlz39Ke6xZcb5w
 // Dark Sky API key: b9dc6901023a8337df6a5c58be197ba0
 
 
@@ -96,7 +101,7 @@ var setWeather = async function () {
   var proxy = 'https://cors-anywhere.herokuapp.com/'
   var weatherArray = [];
   var results = await $.ajax({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=AIzaSyBQl-QMKAwNvWndyQcRfqlz39Ke6xZcb5w`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${destination}&key=AIzaSyD7a3yIPEBgbbIndUZTVahnaxW-XNuSYdI`,
     method: "Get"
   });
   var coordinates = results.results[0].geometry.location;
@@ -106,7 +111,7 @@ var setWeather = async function () {
 
   for (i = 0; i < travelDate.length; i++) {
     var innerRes = await $.ajax({
-      url: `${proxy}https://api.darksky.net/forecast/b9dc6901023a8337df6a5c58be197ba0/${coordinates.lat},${coordinates.lng},${travelDate[i]}?units=us`,   // you could also change units=${units} to use the temperature selector fahrenheit and celsius.  At the moment units=us to run the calculations in fahrenheit.  To run the calculations in celsius, units=si
+      url: `${proxy}https://api.darksky.net/forecast/aa1d47baa06ebf9875856ae457f48ec5/${coordinates.lat},${coordinates.lng},${travelDate[i]}?units=us`,   // you could also change units=${units} to use the temperature selector fahrenheit and celsius.  At the moment units=us to run the calculations in fahrenheit.  To run the calculations in celsius, units=si
       headers: { 'Access-Control-Allow-Origin': '*' },
       method: "GET"
     });
